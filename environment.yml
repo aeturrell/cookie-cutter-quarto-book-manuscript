@@ -1,0 +1,10 @@
+name: qmdbook
+channels:
+  - conda-forge
+dependencies:
+  - jupyter
+  - numpy
+  - pandas
+  - matplotlib
+  - pip
+  - python=3.9

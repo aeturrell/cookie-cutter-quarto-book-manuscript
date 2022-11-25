@@ -1,0 +1,24 @@
+project:
+  type: book
+
+book:
+  title: "Title"
+  author: "Author"
+  date: today
+  chapters:
+    - index.qmd # note that this is blank; quarto must have an 'index.qmd' file
+    - chapter_one.qmd
+    - chapter_two.qmd
+    - references.qmd
+
+bibliography: references.bib
+csl: cookiecutterstyle.csl
+link-citations: yes
+
+format:
+  docx:
+    toc: true
+    reference-doc: ref.docx
+    echo: false # ensure no code is printed in output Word document
+
+jupyter: python3 # jupyter kernel to use for code
