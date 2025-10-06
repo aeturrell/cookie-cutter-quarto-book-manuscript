@@ -36,8 +36,8 @@ What you will need:
 
 ## Recommended
 
-- [Visual Studio Code] and its Python and Quarto extensions helpful for writing.
-- [Zotero], for managing your library of references.
+- [Visual Studio Code](https://code.visualstudio.com/) and its Python and Quarto extensions helpful for writing.
+- [Zotero](https://www.zotero.org/), for managing your library of references.
 
 ## Setup
 
@@ -63,7 +63,7 @@ uv sync
 
 In Zotero, install the betterbibtex package.
 
-#### Date accessed and url given for webpages
+#### Date accessed and url given for webpages
 
 In settings -> betterbibtex, make sure "Add URLs to Bibtex export" is set to "In the 'url' field, but assuming the 'url' package is not installed."
 
@@ -83,9 +83,9 @@ make all
 
 The output Word doc will appear in the `_book` directory.
 
-When first opening the Word doc, you may have to click "yes" to update the internal links with the doc.
+When first opening the Word doc, you may have to click "yes" or "update" to update the internal links within the doc.
 
 ## Known issues
 
-If the compilation via Jupyter fails (eg if a chart code chunk fails) then quarto will leave a Jupyter notebook in its wake---simply delete it or fix the issue re-run the compilation.
+If the compilation via Jupyter fails (eg if a chart code chunk fails) then Quarto will leave a Jupyter notebook in its wake---simply delete it or fix the issue and re-run the compilation.
 
