@@ -8,8 +8,9 @@ A minimal but fully featured template for a quarto, markdown, and/or Jupyter not
   - citations in the order in which they appear in the text
   - citations rendered as superscript numbers within the body of the text
   - citations that links to relevant entry in the bibliography
+  - citations that are chapter specific, which publishers prefer
   - superscript numbered ranges for multiple successive citations, eg 1---3
-  - bibliography citations that, if there is a URL present in the bibliography file (in .bib format), link to the original source
+  - webpage bibliography entries have the original link and date accessed
   - support for citations with ad hoc notes via the "note" entry in the .bib file
 - Figures, with
   - support to create / insert figures reproducibly from code
@@ -24,39 +25,67 @@ A minimal but fully featured template for a quarto, markdown, and/or Jupyter not
   - markdown
   - quarto markdown
 - A table of contents
-- A ready-to-roll Python 3.9 environment via a conda file
 
 ## Requirements
 
 What you will need:
 
 - [Quarto](https://quarto.org/) (and its dependencies)
-- The [Anaconda distribution of Python](https://docs.conda.io/) (for code / figures produced from code only)
+- [Astral's uv](https://docs.astral.sh/uv/) to manage the Python environment
+- [Make](https://www.gnu.org/software/make/) to compile the book
+
+## Recommended
+
+- [Visual Studio Code] and its Python and Quarto extensions helpful for writing.
+- [Zotero], for managing your library of references.
+
+## Setup
+
+### All references at the end
+
+The default setting is for each chapter to have a separate bibliography, as is common in the UK and USA for non-fiction books. However, you can have all references at the end instead.
+
+To change this:
+- add "references.qmd" to the bullets under "chapters" in `_quarto.yml`
+- comment out the filters block in `_quarto.yml`
+- comment out `reference-section-title` in `_quarto.yml`
+- you *may* also need to see `citeproc` to `true`
+
+### Python environment
 
 To install the Python environment, you will need to run:
 
 ```bash
-conda env create -f environment.yml
+uv sync
 ```
 
-Although not required, you may find Visual Studio Code and its Python and Quarto extensions helpful for writing.
+### Configuring Zotero (optional)
+
+In Zotero, install the betterbibtex package.
+
+#### Date accessed and url given for webpages
+
+In settings -> betterbibtex, make sure "Add URLs to Bibtex export" is set to "In the 'url' field, but assuming the 'url' package is not installed."
+
+NB: the citation style language file must be as in this commit too.
+
+#### Auto-export of bibliography
+
+Select file or papers. Go to "Export collection...". Use "BetterBibtex" as format and then ensure that "Keep updated" and "Export in background" are both ticked.
 
 ## Building the book
 
-On the command line, ensure you have activated the Python environment if you are creating plots:
+On the command line, run:
 
 ```bash
-conda activate qmdbook
+make all
 ```
 
-And then create the Word Document with:
+The output Word doc will appear in the `_book` directory.
 
-```bash
-quarto render
-```
-
-It will appear in the `_book` directory.
+When first opening the Word doc, you may have to click "yes" to update the internal links with the doc.
 
 ## Known issues
 
-If the compilation via Jupyter fails (eg if a chart code chunk fails) then quarto will leave a Jupyter notebook in its wake---simply delete it or fix the issue.
+If the compilation via Jupyter fails (eg if a chart code chunk fails) then quarto will leave a Jupyter notebook in its wake---simply delete it or fix the issue re-run the compilation.
+

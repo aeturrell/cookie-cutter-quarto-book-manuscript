@@ -9,11 +9,18 @@ book:
     - index.qmd # note that this is blank; quarto must have an 'index.qmd' file
     - chapter_one.qmd
     - chapter_two.qmd
-    - references.qmd
+    # - references.qmd
+
+filters:
+  # Run Quarto's default filters first
+  - quarto
+  - section-bibliographies
 
 bibliography: references.bib
 csl: cookiecutterstyle.csl
-link-citations: yes
+link-citations: true
+reference-section-title: References
+citeproc: false
 
 format:
   docx:

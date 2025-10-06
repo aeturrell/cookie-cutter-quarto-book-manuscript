@@ -4,8 +4,6 @@
     <title>cookie-cutter-latex-book</title>
     <!--This is based on the Nature style but the notes field is added at the end of each ref for more flexibility.-->
     <!--The original file was written by Michael Berkowitz, mberkowi@gmu.edu-->
-    <!--If you want to add an accessed date to URLs, see the guidance here: -->
-    <!-- https://forums.zotero.org/discussion/20258/adding-accessed-date-to-chicago-style-->
     <id>http://www.zotero.org/styles/nature</id>
     <link href="http://www.zotero.org/styles/nature" rel="self"/>
     <link href="http://www.nature.com/nature/authors/gta/index.html#a5.4" rel="documentation"/>
@@ -44,6 +42,18 @@
       <else-if variable="DOI">
         <text variable="DOI" prefix="doi:"/>
       </else-if>
+      <else-if variable="URL">
+        <group delimiter=" ">
+          <text variable="URL"/>
+          <group prefix="(accessed " suffix=")">
+            <date variable="accessed">
+              <date-part name="day" suffix=" "/>
+              <date-part name="month" form="short" suffix=" " strip-periods="true"/>
+              <date-part name="year"/>
+            </date>
+          </group>
+        </group>
+      </else-if>
     </choose>
   </macro>
   <macro name="issuance">
@@ -61,7 +71,6 @@
       <else-if type="report webpage post post-weblog" match="any">
         <group delimiter=" ">
           <text variable="publisher"/>
-          <text variable="URL"/>
           <date date-parts="year" form="text" variable="issued" prefix="(" suffix=")"/>
         </group>
       </else-if>
